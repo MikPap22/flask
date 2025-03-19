@@ -22,8 +22,8 @@ def signup():
         username = request.form["username"]
         password = request.form["password"]
        
-        return "signup success " 
-        
+        return "signup success"
 
-
+if __name__ == "__main__":
+    app.run(debug = True)
 
