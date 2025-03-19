@@ -2,6 +2,18 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
+import sqlite3
+con = sqlite3.connect("login.db")
+cur = con.cursor()
+cur.execute(""" CREATE TABLE IF NOT EXISTS Users ( 
+                UserName VARCHAR(10) NOT NULL PRIMARY KEY,
+                UserPassword VARCHAR(20) NOT NULL
+                )""")
+con.commit()
+con.close()
+
+
 @app.route("/", methods=["GET","POST"])
 def login():
     if request.method == "GET":
